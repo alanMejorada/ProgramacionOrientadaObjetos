@@ -1,4 +1,3 @@
-import { IDulce } from "../services/IDulce";
 
 export class Dulce {
     _id:number;
@@ -13,5 +12,17 @@ export class Dulce {
         this._precio = precio;
         this._stock = stock;
         this._marca = marca;
+    }
+    getUnidades():number {
+        return this._stock;
+    }
+    restarUnidad():void{
+        this._stock--;
+    }
+    getNombre(){
+        return this._nombre;
+    }
+    getPrecio(){
+        return this._precio;
     }
 }
