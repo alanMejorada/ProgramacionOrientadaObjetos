@@ -56,7 +56,8 @@ function mostrarMenu() {
     console.log("4. Ver saldo actual");
     console.log("5. Devolver cambio");
     console.log("6. Venta total");
-    console.log("7. Salir");
+    console.log("7. Mostrar ventas por producto");
+    console.log("8. Salir");
     console.log("=========================================");
 }
 function iniciarMenu() {
@@ -87,11 +88,14 @@ function iniciarMenu() {
                 maquina.mostrarVentaTotal();
                 break;
             case "7":
+                maquina.mostrarVentaPorProducto();
+                break;
+            case "8":
                 console.log("Gracias por usar la máquina expendedora. ¡Hasta luego!");
                 break;
             default:
                 console.log("Opción inválida. Intenta de nuevo.");
                 break;
         }
-    } while (opcion !== "7");
+    } while (opcion !== "8");
 }

@@ -1,11 +1,13 @@
+import { IMaquina } from "../services/IMaquina";
 import { Dulce } from "./Dulce";
 type Saldo = "1" | "2" | "5" | "10" | "20" | "50" | "100";
-export class Maquina {
+
+export class Maquina implements IMaquina{
     private dulces: Dulce[] = [];
     private ingreso: number = 0;
     private ventaTotal:number = 0;
 
-    constructor(dulces: Dulce[]) {
+    constructor(dulces:Dulce[]){
         this.dulces = dulces;
     }
 
@@ -39,12 +41,20 @@ export class Maquina {
     }
 
     mostrarIngreso():void {
-        console.log(`#### Ventas del dia: ${this.ingreso}`);
+        console.log(`Te quedan: $${this.ingreso}`);
     }
 
     mostrarVentaTotal():void{
         console.log(`Venta total: $${this.ventaTotal}`);
     }
+
+    mostrarVentaPorProducto():void{
+        console.log("\n======Ventas por producto======");
+        this.dulces.forEach((item, index) => {
+            console.log(`${index + 1}. ${item.getNombre()} - Vendidos: ${item.getVendidos()}`);
+        });
+    }
+
     agregarSaldo(saldo: number) {
         if (saldo <= 0) {
             console.log("Ingresa una cantidad valida");

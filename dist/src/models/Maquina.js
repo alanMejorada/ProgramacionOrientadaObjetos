@@ -34,10 +34,16 @@ class Maquina {
         }
     }
     mostrarIngreso() {
-        console.log(`#### Ventas del dia: ${this.ingreso}`);
+        console.log(`Te quedan: $${this.ingreso}`);
     }
     mostrarVentaTotal() {
         console.log(`Venta total: $${this.ventaTotal}`);
+    }
+    mostrarVentaPorProducto() {
+        console.log("\n======Ventas por producto======");
+        this.dulces.forEach((item, index) => {
+            console.log(`${index + 1}. ${item.getNombre()} - Vendidos: ${item.getVendidos()}`);
+        });
     }
     agregarSaldo(saldo) {
         if (saldo <= 0) {
