@@ -1,5 +1,5 @@
 import { Dulce } from "./Dulce";
-
+type Saldo = "1" | "2" | "5" | "10" | "20" | "50" | "100";
 export class Maquina {
     private dulces: Dulce[] = [];
     private ingreso: number = 0;
@@ -17,11 +17,25 @@ export class Maquina {
     venderArticulo(numero: number) {
         const dulce = this.dulces[numero - 1];
         dulce.restarUnidad()
-        this.ingreso = this.ingreso + dulce.getPrecio();
+        this.ingreso = this.ingreso - dulce.getPrecio();
         console.log(`##### Venta de ${dulce.getNombre()} `);
     }
 
     mostrarIngreso() {
         console.log(`#### Ventas del dia: ${this.ingreso}`);
+    }
+
+    agregarSaldo(saldo: number) {
+        if (saldo <= 0) {
+            console.log("Ingresa una cantidad valida");
+            return;
+        }
+        this.ingreso += saldo;
+        console.log(`Has insertado $${saldo}. Saldo actual: $${this.ingreso}`)
+    }
+
+    devolverCambio(): void {
+        console.log(`Cambio devuelto: $${this.ingreso}`);
+        this.ingreso = 0;
     }
 }
